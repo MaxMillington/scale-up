@@ -81,6 +81,8 @@ class LoanRequest < ActiveRecord::Base
   end
 
   def related_projects
-    (categories.flat_map(&:loan_requests) - [self]).shuffle.take(4)
+
+    offset = rand(LoanRequest.count)
+    LoanRequest.offset(offset).take(4)
   end
 end

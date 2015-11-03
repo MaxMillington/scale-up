@@ -20,6 +20,8 @@ class LendersController < ApplicationController
   end
 
   def show
+    # @projects = LoanRequestsContributor.where(user_id: @lender.id).map(&:loan_request)
+
     unless current_lender?
       redirect_to root_path, notice: "Access denied"
     end

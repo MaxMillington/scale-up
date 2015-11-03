@@ -10,7 +10,7 @@ def browse
 
   loop do
     session.visit('https://immense-beach-5339.herokuapp.com/')
-    session.click_button('Browse')
+    session.click_link('Browse')
   end
 
 end
