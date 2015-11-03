@@ -22,9 +22,13 @@ gem "responders"
 gem "traceroute"
 gem "rails_12factor", group: :production
 gem "populator"
-gem "will_paginate"
+gem "will_paginate", "~> 3.0.6"
+gem "skylight"
+gem "newrelic_rpm"
 
 group :development, :test do
+  gem "poltergeist"
+  gem "selenium-webdriver"
   gem "pry-rails"
   gem "awesome_print"
   gem "web-console", "~> 2.0"
@@ -33,6 +37,7 @@ group :development, :test do
   gem "launchy"
   gem "database_cleaner"
   gem "poltergeist"
+  gem "bullet"
 end
 
 group :development do

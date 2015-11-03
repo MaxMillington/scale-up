@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <% will_paginate @loan_requests.each do |loan_request| %>
+    <% @loan_requests.each do |loan_request| %>
       <div class="col-sm-6 col-md-4 col-lg-4">
       <div class="thumbnail">
         <img src=<%=loan_request.image_url %>  alt="...">
@@ -24,4 +24,5 @@
     </div>
   <% end %>
   </div>
+
 </div>
