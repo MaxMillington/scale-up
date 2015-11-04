@@ -100,5 +100,15 @@ module LoadScript
       session.all(".cat-lr").sample.click
     end
 
+    def make_a_loan
+      log_in
+      session.visit "#{host}/browse"
+      session.all(".lr-about").sample.click
+      session.click_link_or_button("Contribute $25")
+      session.click_link("Basket")
+      session.click_link_or_button("Transfer Funds")
+    end
+
+
   end
 end
