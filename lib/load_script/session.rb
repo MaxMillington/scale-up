@@ -46,16 +46,17 @@ module LoadScript
     end
 
     def actions
-      [:browse_loan_requests, :sign_up_as_lender]
+      [:browse_loan_requests, :sign_up_as_lender, :browse_categories,
+       :make_a_loan, :sign_up_as_borrower]
     end
 
     def log_in(email="demo+horace@jumpstartlab.com", pw="password")
       log_out
       session.visit host
-      session.click_link("Log In")
-      session.fill_in("email_address", with: email)
-      session.fill_in("password", with: pw)
-      session.click_link_or_button("Login")
+      session.click_link("Login")
+      session.fill_in("Email", with: email)
+      session.fill_in("Password", with: pw)
+      session.click_link_or_button("Log In")
     end
 
     def browse_loan_requests
@@ -91,6 +92,19 @@ module LoadScript
       end
     end
 
+    def sign_up_as_borrower(name = new_user_name)
+      log_out
+      session.find("#sign-up-dropdown").click
+      session.find("#sign-up-as-borrower").click
+      session.within("#borrowerSignUpModal") do
+        session.fill_in("user_name", with: name)
+        session.fill_in("user_email", with: new_user_email(name))
+        session.fill_in("user_password", with: "password")
+        session.fill_in("user_password_confirmation", with: "password")
+        session.click_link_or_button "Create Account"
+      end
+    end
+
     def categories
       ["Agriculture", "Education", "Community"]
     end
@@ -104,11 +118,10 @@ module LoadScript
       log_in
       session.visit "#{host}/browse"
       session.all(".lr-about").sample.click
-      session.click_link_or_button("Contribute $25")
+      session.find(".contribute").click
       session.click_link("Basket")
       session.click_link_or_button("Transfer Funds")
     end
-
 
   end
 end
