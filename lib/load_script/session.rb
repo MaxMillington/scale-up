@@ -47,7 +47,7 @@ module LoadScript
 
     def actions
       [:browse_loan_requests,   :sign_up_as_lender, :browse_categories,
-       :make_a_loan, :sign_up_as_borrower]
+       :make_a_loan, :sign_up_as_borrower, :borrower_creates_loan_request]
     end
 
     def log_in(email="demo+horace@jumpstartlab.com", pw="password")
@@ -123,6 +123,23 @@ module LoadScript
       session.click_link_or_button("Transfer Funds")
     end
 
+    def borrower_creates_loan_request
+      sign_up_as_borrower
+      session.click_link_or_button "Create Loan Request"
+      session.within("#loanRequestModal") do
+        session.fill_in("Title", with: "Basketball Court")
+        session.fill_in("Description", with: "Court for the kids")
+        session.fill_in("Image url", with: "")
+        session.fill_in("Requested by date", with: "10/10/2015")
+        session.fill_in("Repayment begin date", with: "12/10/2015")
+        session.select("Monthly", from: "Repayment rate")
+        session.select("Education", from: "Category")
+        session.fill_in("Amount", with: "100")
+
+        session.click_link_or_button "Submit"
+      end
+
+    end
 
   end
 end
