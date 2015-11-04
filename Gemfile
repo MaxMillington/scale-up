@@ -23,6 +23,7 @@ gem "traceroute"
 gem "rails_12factor", group: :production
 gem "populator"
 gem "will_paginate", "~> 3.0.6"
+gem "bootstrap-will_paginate"
 gem "skylight"
 gem "newrelic_rpm"
 
