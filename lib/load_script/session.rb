@@ -46,7 +46,7 @@ module LoadScript
     end
 
     def actions
-      [:browse_loan_requests, :sign_up_as_lender, :browse_categories,
+      [:browse_loan_requests,   :sign_up_as_lender, :browse_categories,
        :make_a_loan, :sign_up_as_borrower]
     end
 
@@ -122,6 +122,7 @@ module LoadScript
       session.click_link("Basket")
       session.click_link_or_button("Transfer Funds")
     end
+
 
   end
 end
