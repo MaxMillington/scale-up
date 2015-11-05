@@ -26,18 +26,18 @@ gem "will_paginate", "~> 3.0.6"
 gem "bootstrap-will_paginate"
 gem "skylight"
 gem "newrelic_rpm"
+gem "pry"
+gem "poltergeist"
+gem "capybara"
+gem "pry-rails"
 
 group :development, :test do
-  gem "poltergeist"
   gem "selenium-webdriver"
-  gem "pry-rails"
   gem "awesome_print"
   gem "web-console", "~> 2.0"
   gem "rspec-rails"
-  gem "capybara"
   gem "launchy"
   gem "database_cleaner"
-  gem "poltergeist"
   gem "bullet"
 end
 
