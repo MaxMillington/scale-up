@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   resources :borrowers
 
+  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+
   resources :users, only: [:show]
 
   get "*path", to: "home#not_found"
